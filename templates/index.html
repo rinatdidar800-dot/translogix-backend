@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Грузоперевозки по Казахстану | Логистика | Переезды | TransLogix</title>
+
+    <meta name="description" content="Профессиональные грузоперевозки по Казахстану. Логистика, межгород, квартирные и офисные переезды, доставка грузов, перевозка мебели и техники. TransLogix — быстро, надежно, недорого.">
+    <meta name="keywords" content="грузоперевозки, логистика, грузоперевозки Казахстан, доставка грузов, перевозка грузов, межгород, квартирный переезд, офисный переезд, заказать газель, грузчики, транспортная компания, логистическая компания, перевозка мебели, перевозка техники, грузоперевозки Алматы, грузоперевозки Астана">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="TransLogix">
+    <meta name="theme-color" content="#1e2a38">
+
+    <meta property="og:title" content="Грузоперевозки по Казахстану | Логистика | TransLogix">
+    <meta property="og:description" content="Надежные грузоперевозки, переезды и логистика по Казахстану. Оставьте заявку на сайте TransLogix.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ url_for('static', filename='img/truck1.jpg', _external=True) }}">
+    <meta property="og:url" content="{{ request.url_root }}">
+    <meta property="og:locale" content="ru_RU">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TransLogix — грузоперевозки и логистика">
+    <meta name="twitter:description" content="Грузоперевозки, логистика, переезды и доставка грузов по Казахстану.">
+
+    <link rel="canonical" href="{{ request.url_root }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "MovingCompany",
+          "name": "TransLogix",
+          "description": "Грузоперевозки, логистика, межгород, квартирные и офисные переезды по Казахстану.",
+          "url": "{{ request.url_root }}",
+          "telephone": "+7 776 154 67 97",
+          "areaServed": "KZ",
+          "serviceType": [
+            "Грузоперевозки",
+            "Логистика",
+            "Квартирные переезды",
+            "Офисные переезды",
+            "Доставка грузов"
+          ]
+        }
+    </script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="logo-block">
+        <p class="brand-name">TransLogix</p>
+        <p class="brand-subtitle"
+           data-lang-ru="Грузоперевозки и логистика по Казахстану"
+           data-lang-kz="Қазақстан бойынша жүк тасымалы және логистика">
+            Грузоперевозки и логистика по Казахстану
+        </p>
+    </div>
+
+    <nav class="main-nav">
+        <a href="#about" data-lang-ru="О компании" data-lang-kz="Компания туралы">О компании</a>
+        <a href="#services" data-lang-ru="Услуги" data-lang-kz="Қызметтер">Услуги</a>
+        <a href="#seo-text" data-lang-ru="Преимущества" data-lang-kz="Артықшылықтар">Преимущества</a>
+        <a href="#contact" data-lang-ru="Контакты" data-lang-kz="Байланыс">Контакты</a>
+    </nav>
+
+    <div class="header-actions">
+        <button id="langToggle" type="button">Қаз / Рус</button>
+        <a href="https://wa.me/77761546797" class="whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1
+            data-lang-ru="Грузоперевозки и логистика по Казахстану"
+            data-lang-kz="Қазақстан бойынша жүк тасымалы және логистика">
+            Грузоперевозки и логистика по Казахстану
+        </h1>
+
+        <p
+            data-lang-ru="Межгород, доставка грузов, квартирные и офисные переезды, перевозка мебели и техники."
+            data-lang-kz="Қалааралық тасымал, жүк жеткізу, пәтер және кеңсе көшіру, жиһаз бен техниканы тасымалдау.">
+            Межгород, доставка грузов, квартирные и офисные переезды, перевозка мебели и техники.
+        </p>
+
+        <div class="hero-buttons">
+            <button type="button" onclick="scrollToContact()"
+                    data-lang-ru="Оставить заявку"
+                    data-lang-kz="Өтініш қалдыру">
+                Оставить заявку
+            </button>
+
+            <a href="#services" class="secondary-btn"
+               data-lang-ru="Наши услуги"
+               data-lang-kz="Біздің қызметтер">
+                Наши услуги
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="section gray">
+    <div class="container">
+        <h2 data-lang-ru="Наши услуги" data-lang-kz="Біздің қызметтер">Наши услуги</h2>
+        <p class="section-subtitle"
+           data-lang-ru="Полный спектр услуг по грузоперевозкам, логистике и переездам"
+           data-lang-kz="Жүк тасымалы, логистика және көшіру бойынша толық қызметтер">
+            Полный спектр услуг по грузоперевозкам, логистике и переездам
+        </p>
+
+        <div class="cards">
+            <div class="card">
+                <h3 data-lang-ru="Междугородние грузоперевозки" data-lang-kz="Қалааралық жүк тасымалы">
+                    Междугородние грузоперевозки
+                </h3>
+                <p data-lang-ru="Перевозим грузы по маршрутам Астана – Караганда – Алматы и по другим направлениям Казахстана."
+                   data-lang-kz="Астана – Қарағанды – Алматы бағытымен және Қазақстанның басқа қалаларына жүк тасымалдаймыз.">
+                    Перевозим грузы по маршрутам Астана – Караганда – Алматы и по другим направлениям Казахстана.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 data-lang-ru="Квартирные и офисные переезды" data-lang-kz="Пәтер және кеңсе көшіру">
+                    Квартирные и офисные переезды
+                </h3>
+                <p data-lang-ru="Аккуратная перевозка мебели, техники, коробок и личных вещей с быстрой погрузкой и разгрузкой."
+                   data-lang-kz="Жиһазды, техниканы, қораптарды және жеке заттарды мұқият тиеп, түсіріп, тасымалдаймыз.">
+                    Аккуратная перевозка мебели, техники, коробок и личных вещей с быстрой погрузкой и разгрузкой.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 data-lang-ru="Логистика и доставка грузов" data-lang-kz="Логистика және жүк жеткізу">
+                    Логистика и доставка грузов
+                </h3>
+                <p data-lang-ru="Подбираем маршрут, контролируем доставку, сокращаем сроки и расходы на транспортировку."
+                   data-lang-kz="Маршрутты жоспарлаймыз, жеткізуді бақылаймыз, уақыт пен шығынды азайтамыз.">
+                    Подбираем маршрут, контролируем доставку, сокращаем сроки и расходы на транспортировку.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="gallery" class="section">
+    <div class="container">
+        <h2 data-lang-ru="Наш автопарк" data-lang-kz="Біздің автопарк">Наш автопарк</h2>
+        <p class="section-subtitle"
+           data-lang-ru="Транспорт для грузоперевозок, переездов и логистических задач"
+           data-lang-kz="Жүк тасымалы, көшіру және логистикалық міндеттерге арналған көлік">
+            Транспорт для грузоперевозок, переездов и логистических задач
+        </p>
+
+        <div class="gallery-grid">
+            <img src="{{ url_for('static', filename='img/truck1.jpg') }}" alt="Грузоперевозки по Казахстану">
+            <img src="{{ url_for('static', filename='img/moving.jpg') }}" alt="Квартирные переезды и доставка мебели">
+            <img src="{{ url_for('static', filename='img/logistics.jpg') }}" alt="Логистика и доставка грузов">
+        </div>
+    </div>
+</section>
+
+<section id="about" class="section gray">
+    <div class="container about-text">
+        <h2 data-lang-ru="О компании TransLogix" data-lang-kz="TransLogix компаниясы туралы">
+            О компании TransLogix
+        </h2>
+
+        <p data-lang-ru="TransLogix — это надежная транспортная компания, которая предоставляет услуги грузоперевозок по Казахстану. Мы работаем с частными клиентами и бизнесом, помогаем организовать переезды, доставку грузов, логистику и перевозку вещей."
+           data-lang-kz="TransLogix — Қазақстан бойынша жүк тасымалдау қызметін ұсынатын сенімді компания. Біз жеке клиенттермен де, бизнеспен де жұмыс істейміз, көшу, жүк жеткізу, логистика және заттарды тасымалдауды ұйымдастырамыз.">
+            TransLogix — это надежная транспортная компания, которая предоставляет услуги грузоперевозок по Казахстану. Мы работаем с частными клиентами и бизнесом, помогаем организовать переезды, доставку грузов, логистику и перевозку вещей.
+        </p>
+
+        <p data-lang-ru="Если вам нужны межгород, газель, перевозка мебели, техники, коробок или полный квартирный переезд — мы подберем оптимальное решение по срокам и стоимости."
+           data-lang-kz="Егер сізге қалааралық тасымал, газель, жиһаз, техника, қораптар немесе толық пәтер көшіру керек болса — біз сізге уақыт пен баға бойынша тиімді нұсқаны ұсынамыз.">
+            Если вам нужны межгород, газель, перевозка мебели, техники, коробок или полный квартирный переезд — мы подберем оптимальное решение по срокам и стоимости.
+        </p>
+    </div>
+</section>
+
+<section id="seo-text" class="section">
+    <div class="container">
+        <h2 data-lang-ru="Грузоперевозки, логистика и переезды" data-lang-kz="Жүк тасымалы, логистика және көшіру">
+            Грузоперевозки, логистика и переезды
+        </h2>
+
+        <div class="seo-grid">
+            <div class="seo-box">
+                <h3 data-lang-ru="Почему выбирают нас" data-lang-kz="Неге бізді таңдайды">
+                    Почему выбирают нас
+                </h3>
+                <ul>
+                    <li data-lang-ru="Быстрая обработка заявок" data-lang-kz="Өтініштерді жылдам өңдеу">Быстрая обработка заявок</li>
+                    <li data-lang-ru="Надежная доставка по Казахстану" data-lang-kz="Қазақстан бойынша сенімді жеткізу">Надежная доставка по Казахстану</li>
+                    <li data-lang-ru="Услуги для частных клиентов и бизнеса" data-lang-kz="Жеке клиенттерге де, бизнеске де қызмет">Услуги для частных клиентов и бизнеса</li>
+                    <li data-lang-ru="Переезды, логистика и перевозка грузов" data-lang-kz="Көшіру, логистика және жүк тасымалы">Переезды, логистика и перевозка грузов</li>
+                </ul>
+            </div>
+
+            <div class="seo-box">
+                <h3 data-lang-ru="Что мы перевозим" data-lang-kz="Біз не тасымалдаймыз">
+                    Что мы перевозим
+                </h3>
+                <ul>
+                    <li data-lang-ru="Мебель" data-lang-kz="Жиһаз">Мебель</li>
+                    <li data-lang-ru="Бытовую технику" data-lang-kz="Тұрмыстық техника">Бытовую технику</li>
+                    <li data-lang-ru="Коробки и личные вещи" data-lang-kz="Қораптар мен жеке заттар">Коробки и личные вещи</li>
+                    <li data-lang-ru="Коммерческие грузы" data-lang-kz="Коммерциялық жүктер">Коммерческие грузы</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section gray">
+    <div class="container">
+        <h2 data-lang-ru="Оставить заявку" data-lang-kz="Өтініш қалдыру">Оставить заявку</h2>
+        <p class="section-subtitle"
+           data-lang-ru="Заполните форму, и мы свяжемся с вами для расчета стоимости перевозки"
+           data-lang-kz="Форманы толтырыңыз, біз тасымал құнын есептеу үшін сізбен хабарласамыз">
+            Заполните форму, и мы свяжемся с вами для расчета стоимости перевозки
+        </p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-message error">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% if success %}
+            <div class="flash-message success">
+                <p data-lang-ru="Заявка успешно отправлена!" data-lang-kz="Өтініш сәтті жіберілді!">
+                    Заявка успешно отправлена!
+                </p>
+            </div>
+        {% endif %}
+
+        <form id="contactForm" action="/submit" method="POST">
+            <div class="direction">
+                <strong data-lang-ru="Направление:" data-lang-kz="Бағыт:">Направление:</strong>
+
+                <label>
+                    <input type="radio" name="direction" value="astana-almaty" required>
+                    <span data-lang-ru="Астана – Караганда – Алматы" data-lang-kz="Астана – Қарағанды – Алматы">
+                        Астана – Караганда – Алматы
+                    </span>
+                </label>
+
+                <label>
+                    <input type="radio" name="direction" value="almaty-astana">
+                    <span data-lang-ru="Алматы – Караганда – Астана" data-lang-kz="Алматы – Қарағанды – Астана">
+                        Алматы – Караганда – Астана
+                    </span>
+                </label>
+
+                <label>
+                    <input type="radio" name="direction" value="kazakhstan-logistics">
+                    <span data-lang-ru="Другая доставка / логистика по Казахстану" data-lang-kz="Қазақстан бойынша басқа жеткізу / логистика">
+                        Другая доставка / логистика по Казахстану
+                    </span>
+                </label>
+            </div>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Ваше имя"
+                data-placeholder-ru="Ваше имя"
+                data-placeholder-kz="Атыңыз"
+                required
+            >
+
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Телефон"
+                data-placeholder-ru="Телефон"
+                data-placeholder-kz="Телефон"
+                required
+            >
+
+            <textarea
+                id="message"
+                name="message"
+                placeholder="Опишите груз, маршрут или задачу"
+                data-placeholder-ru="Опишите груз, маршрут или задачу"
+                data-placeholder-kz="Жүк, маршрут немесе міндетті сипаттаңыз"
+                required
+            ></textarea>
+
+            <button type="submit"
+                    data-lang-ru="Отправить заявку"
+                    data-lang-kz="Өтініш жіберу">
+                Отправить заявку
+            </button>
+        </form>
+
+        <p id="formMessage" class="form-message"></p>
+    </div>
+</section>
+
+<footer>
+    <div class="container footer-content">
+        <p>© 2026 TransLogix — Грузоперевозки и логистика по Казахстану</p>
+        <p
+            data-lang-ru="Грузоперевозки • Логистика • Переезды • Доставка грузов"
+            data-lang-kz="Жүк тасымалы • Логистика • Көшіру • Жүк жеткізу">
+            Грузоперевозки • Логистика • Переезды • Доставка грузов
+        </p>
+    </div>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
