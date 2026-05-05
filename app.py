@@ -1,93 +1,50 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-import os
+from flask import Flask, render_template, request, redirect
 import sqlite3
 import requests
 
 app = Flask(__name__)
-app.secret_key = os.getenv("FLASK_SECRET_KEY", "translogix-secret-key")
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(BASE_DIR, "database.db")
 
 # ------------------- Telegram -------------------
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN", "")
-TELEGRAM_ADMINS = [
-    admin.strip()
-    for admin in os.getenv("TELEGRAM_ADMINS", "1016799185").split(",")
-    if admin.strip()
-]
+TELEGRAM_TOKEN = "8589944862:AAF91FI_pwX5JoDX6DmZRGGdE5YI_l9RgtU"
+TELEGRAM_ADMINS = ["1016799185"]
 
 # ------------------- WhatsApp (Green-API) -------------------
-GREEN_ID_INSTANCE = os.getenv("GREEN_ID_INSTANCE", "")
-GREEN_API_TOKEN = os.getenv("GREEN_API_TOKEN", "")
+GREEN_ID_INSTANCE = "7103533645"  # без @c.us
+GREEN_API_TOKEN = "2a9686cbd6ba42cb87ef908305a467cbc6cea6b1fc11464aac"
 
+# Маршруты → номера админов
 WHATSAPP_ROUTES = {
     "astana-almaty": ["77055394342"],
-    "almaty-astana": ["77761546797"],
-    "kazakhstan-logistics": ["77055394342", "77761546797"],
+    "almaty-astana": ["77761546797"]
 }
-
-
-def get_db_connection():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
-
 
 # ------------------- Telegram -------------------
 def send_telegram(name, phone, message, direction):
-    if not TELEGRAM_TOKEN or not TELEGRAM_ADMINS:
-        print("Telegram credentials are not configured.")
-        return
-
-    route_names = {
-        "astana-almaty": "Астана - Караганда - Алматы",
-        "almaty-astana": "Алматы - Караганда - Астана",
-        "kazakhstan-logistics": "Логистика / Доставка по Казахстану",
-    }
-
     text = (
-        f"📦 Новая заявка с сайта TransLogix\n\n"
-        f"🛣 Направление: {route_names.get(direction, direction)}\n"
+        f"📦 Новая заявка\n\n"
+        f"🛣 Направление: {direction}\n"
         f"👤 Имя: {name}\n"
         f"📞 Телефон: {phone}\n"
-        f"📝 Описание груза: {message}"
+        f"📝 Сообщение: {message}"
     )
-
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-
     for chat_id in TELEGRAM_ADMINS:
-        try:
-            resp = requests.post(
-                url,
-                data={"chat_id": chat_id, "text": text},
-                timeout=10
-            )
-            print("Telegram status:", resp.status_code, resp.text)
-        except Exception as e:
-            print("Telegram send error:", e)
-
+        requests.post(url, data={"chat_id": chat_id, "text": text})
 
 # ------------------- WhatsApp -------------------
 def send_whatsapp(name, phone, message, direction):
-    if not GREEN_ID_INSTANCE or not GREEN_API_TOKEN:
-        print("WhatsApp Green API credentials are not configured.")
-        return
-
     route_names = {
         "astana-almaty": "Астана - Караганда - Алматы",
-        "almaty-astana": "Алматы - Караганда - Астана",
-        "kazakhstan-logistics": "Логистика / Доставка по Казахстану",
+        "almaty-astana": "Алматы - Караганда - Астана"
     }
 
     admins = WHATSAPP_ROUTES.get(direction, [])
     if not admins:
-        print("No WhatsApp admins configured for route:", direction)
         return
 
     text = (
-        "Новая заявка с сайта TransLogix\n\n"
-        f"Маршрут: {route_names.get(direction, direction)}\n"
+        "Новая заявка\n\n"
+        f"Маршрут: {route_names.get(direction)}\n"
         f"Имя: {name}\n"
         f"Телефон: {phone}\n"
         f"Груз: {message}"
@@ -101,51 +58,45 @@ def send_whatsapp(name, phone, message, direction):
             "message": text
         }
 
-        try:
-            resp = requests.post(url, json=payload, timeout=15)
-            print("WA STATUS:", resp.status_code, resp.text)
-        except Exception as e:
-            print("WhatsApp send error:", e)
-
+        resp = requests.post(url, json=payload)
+        print("WA STATUS:", resp.status_code, resp.text)
 
 # ------------------- База -------------------
 def init_db():
-    conn = get_db_connection()
+    conn = sqlite3.connect("database.db")
     c = conn.cursor()
     c.execute("""
         CREATE TABLE IF NOT EXISTS applications (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            phone TEXT NOT NULL,
-            message TEXT NOT NULL,
-            direction TEXT NOT NULL
+            name TEXT,
+            phone TEXT,
+            message TEXT,
+            direction TEXT
         )
     """)
     conn.commit()
     conn.close()
 
-
 # ------------------- Главная -------------------
 @app.route("/")
 def home():
-    success = request.args.get("success")
-    return render_template("index.html", success=success)
-
+    return render_template("index.html")
 
 # ------------------- Отправка формы -------------------
 @app.route("/submit", methods=["POST"])
 def submit():
-    name = request.form.get("name", "").strip()
-    phone = request.form.get("phone", "").strip()
-    message = request.form.get("message", "").strip()
-    direction = request.form.get("direction", "").strip()
+    name = request.form.get("name")
+    phone = request.form.get("phone")
+    message = request.form.get("message")
+    direction = request.form.get("direction")
 
+    # Проверка обязательных полей
     if not all([name, phone, message, direction]):
-        flash("Пожалуйста, заполните обязательные поля.")
-        return redirect(url_for("home"))
+        return "❌ Все поля обязательны!", 400
 
+    # Сохраняем в базе
     try:
-        with get_db_connection() as conn:
+        with sqlite3.connect("database.db") as conn:
             c = conn.cursor()
             c.execute("""
                 INSERT INTO applications (name, phone, message, direction)
@@ -154,9 +105,9 @@ def submit():
             conn.commit()
     except Exception as e:
         print(f"Ошибка базы: {e}")
-        flash("Ошибка сохранения заявки.")
-        return redirect(url_for("home"))
+        return "❌ Ошибка сохранения заявки", 500
 
+    # Отправка уведомлений
     try:
         send_telegram(name, phone, message, direction)
     except Exception as e:
@@ -167,31 +118,29 @@ def submit():
     except Exception as e:
         print(f"Ошибка WhatsApp: {e}")
 
-    return redirect(url_for("home", success=1))
-
+    return redirect("/")
 
 # ------------------- Админка -------------------
 @app.route("/admin")
 def admin():
-    conn = get_db_connection()
+    conn = sqlite3.connect("database.db")
     c = conn.cursor()
     c.execute("SELECT * FROM applications ORDER BY id DESC")
     data = c.fetchall()
     conn.close()
     return render_template("admin.html", data=data)
 
-
 # ------------------- Удаление -------------------
-@app.route("/delete/<int:application_id>")
-def delete(application_id):
-    conn = get_db_connection()
+@app.route("/delete/<int:id>")
+def delete(id):
+    conn = sqlite3.connect("database.db")
     c = conn.cursor()
-    c.execute("DELETE FROM applications WHERE id = ?", (application_id,))
+    c.execute("DELETE FROM applications WHERE id=?", (id,))
     conn.commit()
     conn.close()
-    return redirect(url_for("admin"))
+    return redirect("/admin")
 
-
+# ------------------- Запуск -------------------
 if __name__ == "__main__":
     init_db()
     app.run(debug=True)

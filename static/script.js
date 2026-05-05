@@ -1,4 +1,9 @@
+// =====================
+// ИНИЦИАЛИЗАЦИЯ ПОСЛЕ ЗАГРУЗКИ DOM
+// =====================
 document.addEventListener("DOMContentLoaded", function () {
+
+    // ---------- Плавная прокрутка ----------
     window.scrollToContact = function () {
         const contact = document.getElementById("contact");
         if (contact) {
@@ -6,10 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    // ---------- Переключение языка ----------
     const langToggle = document.getElementById("langToggle");
-    const form = document.getElementById("contactForm");
-    const formMessage = document.getElementById("formMessage");
-
     let currentLang = "ru";
 
     const translations = {
@@ -17,88 +20,84 @@ document.addEventListener("DOMContentLoaded", function () {
             nameError: "Имя должно содержать минимум 2 символа.",
             phoneError: "Введите корректный телефон.",
             messageError: "Опишите груз подробнее.",
-            directionError: "Выберите направление перевозки."
+            directionError: "Выберите направление перевозки.",
+            success: "Заявка успешно отправлена!"
         },
         kz: {
             nameError: "Аты кемінде 2 таңбадан тұруы керек.",
             phoneError: "Дұрыс телефон нөмірін енгізіңіз.",
-            messageError: "Жүктің сипаттамасын толығырақ жазыңыз.",
-            directionError: "Тасымалдау бағытын таңдаңыз."
+            messageError: "Жүктің сипаттамасын жазыңыз.",
+            directionError: "Тасымалдау бағытын таңдаңыз.",
+            success: "Өтініш сәтті жіберілді!"
         }
     };
-
-    function updateLanguage(lang) {
-        document.querySelectorAll("[data-lang-ru]").forEach(el => {
-            const value = el.getAttribute(`data-lang-${lang}`);
-            if (value) {
-                el.textContent = value;
-            }
-        });
-
-        document.querySelectorAll("[data-placeholder-ru]").forEach(el => {
-            const value = el.getAttribute(`data-placeholder-${lang}`);
-            if (value) {
-                el.placeholder = value;
-            }
-        });
-
-        if (langToggle) {
-            langToggle.textContent = lang === "ru" ? "Қаз / Рус" : "Рус / Қаз";
-        }
-    }
 
     if (langToggle) {
         langToggle.addEventListener("click", () => {
             currentLang = currentLang === "ru" ? "kz" : "ru";
-            updateLanguage(currentLang);
+
+            // Перевод текста
+            document.querySelectorAll("[data-lang-ru]").forEach(el => {
+                const value = el.getAttribute(`data-lang-${currentLang}`);
+                if (value) el.textContent = value;
+            });
+
+            // Перевод placeholder
+            document.querySelectorAll("[data-placeholder-ru]").forEach(el => {
+                const value = el.getAttribute(`data-placeholder-${currentLang}`);
+                if (value) el.placeholder = value;
+            });
+
+            // Текст кнопки
+            langToggle.textContent = currentLang === "ru" ? "Қаз / Рус" : "Рус / Қаз";
         });
     }
 
-    if (!form || !formMessage) {
-        return;
-    }
+    // ---------- Форма ----------
+    const form = document.getElementById("contactForm");
+    const formMessage = document.getElementById("formMessage");
+
+    if (!form || !formMessage) return;
 
     form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
         const name = document.getElementById("name").value.trim();
         const phone = document.getElementById("phone").value.trim();
         const message = document.getElementById("message").value.trim();
         const direction = document.querySelector('input[name="direction"]:checked');
 
-        const phoneRegex = /^[\d\s()+-]{6,}$/;
-
-        clearMessage();
-
         if (!direction) {
-            e.preventDefault();
             showError(translations[currentLang].directionError);
             return;
         }
 
         if (name.length < 2) {
-            e.preventDefault();
             showError(translations[currentLang].nameError);
             return;
         }
-
+        const phoneRegex = /^[\d\s()+-]{6,}$/;
         if (!phoneRegex.test(phone)) {
-            e.preventDefault();
             showError(translations[currentLang].phoneError);
             return;
         }
 
         if (message.length < 5) {
-            e.preventDefault();
             showError(translations[currentLang].messageError);
             return;
         }
+
+        // Успех
+        formMessage.textContent = translations[currentLang].success;
+        formMessage.style.color = "green";
+
+        // Отправка формы
+        form.submit();
     });
 
     function showError(text) {
         formMessage.textContent = text;
-        formMessage.style.color = "#a12626";
+        formMessage.style.color = "red";
     }
 
-    function clearMessage() {
-        formMessage.textContent = "";
-    }
 });
