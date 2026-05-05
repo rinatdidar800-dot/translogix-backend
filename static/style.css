@@ -125,8 +125,10 @@ a {
 .logo-block {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    min-width: 180px;
+    gap: 4px;
+    min-width: 0;
+    flex: 0 0 auto;
+    max-width: 320px;
 }
 
 .brand-top,
@@ -137,21 +139,32 @@ a {
     color: var(--white);
     letter-spacing: -0.4px;
     line-height: 1;
+    white-space: nowrap;
 }
 
 /* Amber dot accent on brand */
-.brand-name::after,
-#logo::after {
+.brand-name::after {
     content: '.';
     color: var(--amber);
 }
 
+/* #logo is an h1 used as the tagline inside header —
+   strip heading defaults and make it a small subtitle line */
 #logo {
     font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--white);
-    letter-spacing: -0.4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    white-space: normal;
+    word-break: break-word;
+    /* Remove after-dot since the full route is the text */
+}
+
+#logo::after {
+    content: none;
 }
 
 .brand-subtitle {
@@ -160,7 +173,7 @@ a {
     color: rgba(255,255,255,0.42);
     text-transform: uppercase;
     letter-spacing: 1.2px;
-    margin-top: 3px;
+    margin-top: 2px;
 }
 
 /* Nav */
