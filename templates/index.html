@@ -335,31 +335,12 @@
             <span class="section-label">Контакты</span>
             <h2>Оставьте заявку на перевозку</h2>
             <p class="section-subtitle">
-                Выберите нужный пункт назначения и отправьте заявку — мы перезвоним.
+                Заполните форму — мы перезвоним и уточним детали.
             </p>
         </div>
 
         <div class="contact-box">
             <form id="contactForm" action="/submit" method="POST">
-                <div class="direction">
-                    <strong>Направление (из Алматы до…):</strong>
-
-                    <label>
-                        <input type="radio" name="direction" value="almaty-balkash" required>
-                        <span>Алматы → Балхаш</span>
-                    </label>
-
-                    <label>
-                        <input type="radio" name="direction" value="almaty-karaganda">
-                        <span>Алматы → Караганда</span>
-                    </label>
-
-                    <label>
-                        <input type="radio" name="direction" value="almaty-astana">
-                        <span>Алматы → Астана (полный маршрут)</span>
-                    </label>
-                </div>
-
                 <input
                     type="text"
                     id="name"
@@ -372,14 +353,14 @@
                     type="tel"
                     id="phone"
                     name="phone"
-                    placeholder="Телефон"
+                    placeholder="Номер телефона"
                     required
                 >
 
                 <textarea
                     id="message"
                     name="message"
-                    placeholder="Опишите груз: мебель, коробки, техника — и откуда/куда"
+                    placeholder="Опишите груз: мебель, коробки, техника — и куда везём"
                     required
                 ></textarea>
 
@@ -389,6 +370,16 @@
             </form>
 
             <p id="formMessage" class="form-message"></p>
+
+            <!-- Кнопка звонка -->
+            <div class="contact-divider">
+                <span>или свяжитесь сразу</span>
+            </div>
+
+            <a href="tel:+77761546797" class="call-btn">
+                <i class="fa-solid fa-phone"></i>
+                <span>+7 776 154-67-97</span>
+            </a>
         </div>
     </div>
 </section>

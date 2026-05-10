@@ -988,6 +988,73 @@ form button[type="submit"]:hover {
     letter-spacing: 0.05px;
 }
 
+/* ── Contact divider ── */
+.contact-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 22px 0 16px;
+}
+
+.contact-divider::before,
+.contact-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+}
+
+.contact-divider span {
+    font-size: 12px;
+    color: rgba(255,255,255,0.38);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    font-family: var(--font-body);
+}
+
+/* ── Call button ── */
+.call-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 15px 24px;
+    border-radius: var(--r-md);
+    border: 1px solid rgba(34, 197, 94, 0.28);
+    background: rgba(34, 197, 94, 0.08);
+    color: #4ade80;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-decoration: none;
+    transition: all var(--dur) var(--ease);
+}
+
+.call-btn i {
+    font-size: 18px;
+    animation: ring 2.4s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+.call-btn:hover {
+    background: rgba(34, 197, 94, 0.16);
+    border-color: rgba(34, 197, 94, 0.50);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(34, 197, 94, 0.20);
+    color: #4ade80;
+}
+
+@keyframes ring {
+    0%, 100% { transform: rotate(0deg); }
+    8%        { transform: rotate(14deg); }
+    16%       { transform: rotate(-12deg); }
+    24%       { transform: rotate(10deg); }
+    32%       { transform: rotate(-8deg); }
+    40%       { transform: rotate(0deg); }
+}
+
 .flash-message {
     border-radius: var(--r-md);
     padding: 14px 18px;
