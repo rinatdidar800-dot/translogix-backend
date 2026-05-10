@@ -604,6 +604,84 @@ section h2 em {
 }
 
 /* ============================================================
+   ROUTE STRIP  (visual route map)
+   ============================================================ */
+.route-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: 40px auto 0;
+    max-width: 860px;
+    padding: 32px 40px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    box-shadow: var(--shadow-sm);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.route-city {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    min-width: 100px;
+}
+
+.route-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--off-white);
+    box-shadow: 0 0 0 2px var(--accent);
+    flex-shrink: 0;
+}
+
+.route-line {
+    flex: 1;
+    height: 2px;
+    min-width: 48px;
+    background: linear-gradient(90deg, var(--accent), #6ab0ff);
+    opacity: 0.5;
+    margin-bottom: 26px;
+    position: relative;
+}
+
+.route-line::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 7px solid #6ab0ff;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    opacity: 0.7;
+}
+
+.route-name {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-head);
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+}
+
+.route-sub {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    text-align: center;
+    white-space: nowrap;
+    max-width: 110px;
+    line-height: 1.4;
+}
+
+/* ============================================================
    GALLERY
    ============================================================ */
 .gallery-grid {
@@ -1095,4 +1173,46 @@ footer {
     }
 
     section h2 { font-size: 26px; }
+
+    /* Route strip — vertical on mobile */
+    .route-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 20px;
+        gap: 0;
+    }
+
+    .route-city {
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+        min-width: unset;
+    }
+
+    .route-line {
+        width: 2px;
+        height: 28px;
+        min-width: unset;
+        background: linear-gradient(180deg, var(--accent), #6ab0ff);
+        margin-bottom: 0;
+        margin-left: 8px;
+    }
+
+    .route-line::after {
+        right: unset;
+        top: unset;
+        bottom: -1px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 7px solid #6ab0ff;
+        border-bottom: none;
+    }
+
+    .route-name,
+    .route-sub {
+        white-space: normal;
+        text-align: left;
+    }
 }

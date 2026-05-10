@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Грузоперевозки Алматы – Караганда – Астана | Астана – Караганда – Алматы | TransLogix</title>
+    <title>Грузоперевозки Алматы – Балхаш – Караганда – Астана | TransLogix</title>
 
-    <meta name="description" content="Грузоперевозки по маршрутам Алматы – Караганда – Астана и Астана – Караганда – Алматы. Перевозка мебели, техники, личных вещей и коммерческих грузов. Междугородняя доставка быстро и надежно.">
+    <meta name="description" content="Грузоперевозки по маршруту Алматы – Балхаш – Караганда – Астана. Перевозка мебели, техники, личных вещей и коммерческих грузов. Быстро и надёжно.">
 
-    <meta name="keywords" content="грузоперевозки Алматы Астана, грузоперевозки Астана Алматы, грузоперевозки Алматы Караганда, грузоперевозки Караганда Астана, межгород Алматы Астана, межгород Астана Алматы, перевозка грузов Алматы Астана, доставка грузов Алматы Астана, перевозка мебели Алматы Астана, перевозка вещей Алматы Астана, логистика Алматы Астана, транспортная компания Алматы Астана">
+    <meta name="keywords" content="грузоперевозки Алматы Астана, грузоперевозки Алматы Балхаш, грузоперевозки Балхаш Астана, грузоперевозки Алматы Караганда, перевозка грузов Алматы Астана, перевозка мебели Алматы Астана, логистика Алматы Астана, транспортная компания Алматы Астана Балхаш">
 
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#101c2e">
 
-    <meta property="og:title" content="TransLogix — грузоперевозки Алматы – Караганда – Астана">
-    <meta property="og:description" content="Междугородние грузоперевозки по маршрутам Алматы – Караганда – Астана и обратно.">
+    <meta property="og:title" content="TransLogix — грузоперевозки Алматы – Балхаш – Караганда – Астана">
+    <meta property="og:description" content="Междугородние грузоперевозки по маршруту Алматы – Балхаш – Караганда – Астана.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ url_for('static', filename='img/truck1.jpg', _external=True) }}">
     <meta property="og:url" content="{{ request.url_root }}">
@@ -27,14 +27,10 @@
       "@context": "https://schema.org",
       "@type": "MovingCompany",
       "name": "TransLogix",
-      "description": "Грузоперевозки по маршрутам Алматы – Караганда – Астана и Астана – Караганда – Алматы.",
+      "description": "Грузоперевозки по маршруту Алматы – Балхаш – Караганда – Астана.",
       "url": "{{ request.url_root }}",
       "telephone": "+7 776 154 67 97",
-      "areaServed": [
-        "Алматы",
-        "Караганда",
-        "Астана"
-      ],
+      "areaServed": ["Алматы", "Балхаш", "Караганда", "Астана"],
       "serviceType": [
         "Междугородние грузоперевозки",
         "Перевозка мебели",
@@ -48,18 +44,19 @@
 
 <body>
 
+<!-- ===== HEADER ===== -->
 <header class="site-header">
     <div class="header-inner">
         <div class="brand-block">
             <p class="brand-top">TransLogix</p>
             <h1 id="logo">
-                Грузоперевозки Алматы – Караганда – Астана и обратно
+                Грузоперевозки Алматы – Балхаш – Караганда – Астана
             </h1>
         </div>
 
         <nav class="main-nav">
             <a href="#services">Услуги</a>
-            <a href="#routes">Маршруты</a>
+            <a href="#routes">Маршрут</a>
             <a href="#about">О компании</a>
             <a href="#contact">Контакты</a>
         </nav>
@@ -72,30 +69,29 @@
     </div>
 </header>
 
+<!-- ===== HERO ===== -->
 <section class="hero">
     <div class="hero-overlay"></div>
-
     <div class="hero-content">
         <span class="hero-badge">
             Междугородние перевозки
         </span>
 
         <h2>
-            Надежные грузоперевозки между Алматы, Карагандой и Астаной
+            Грузоперевозки <span>Алматы – Балхаш – Караганда – Астана</span>
         </h2>
 
         <p>
-            Выполняем грузоперевозки по маршрутам Алматы – Караганда – Астана и Астана – Караганда – Алматы.
-            Перевозим мебель, технику, личные вещи, коробки и коммерческие грузы.
+            Специализируемся на одном маршруте — Алматы, Балхаш, Караганда и Астана.
+            Перевозим мебель, технику, личные вещи и коммерческие грузы.
         </p>
 
         <div class="hero-buttons">
             <button type="button" class="primary-btn" onclick="scrollToContact()">
                 Оставить заявку
             </button>
-
             <a href="#routes" class="ghost-btn">
-                Посмотреть маршруты
+                Посмотреть маршрут
             </a>
         </div>
 
@@ -116,13 +112,14 @@
     </div>
 </section>
 
+<!-- ===== УСЛУГИ ===== -->
 <section id="services" class="section section-soft">
     <div class="container">
         <div class="section-head">
             <span class="section-label">Услуги</span>
-            <h2>Наши услуги грузоперевозок</h2>
+            <h2>Что мы перевозим</h2>
             <p>
-                Работаем только по основным маршрутам между Алматы, Карагандой и Астаной.
+                Работаем по одному направлению и делаем это хорошо.
             </p>
         </div>
 
@@ -131,9 +128,9 @@
                 <div class="card-icon">
                     <i class="fa-solid fa-road"></i>
                 </div>
-                <h3>Междугородние грузоперевозки</h3>
+                <h3>Междугородние перевозки</h3>
                 <p>
-                    Перевозка грузов по направлениям Алматы – Караганда – Астана и Астана – Караганда – Алматы.
+                    Перевозка грузов по маршруту Алматы – Балхаш – Караганда – Астана с остановками в любом из городов.
                 </p>
             </div>
 
@@ -141,9 +138,9 @@
                 <div class="card-icon">
                     <i class="fa-solid fa-couch"></i>
                 </div>
-                <h3>Перевозка мебели и техники</h3>
+                <h3>Мебель и техника</h3>
                 <p>
-                    Аккуратно перевозим диваны, шкафы, холодильники, стиральные машины и другую технику.
+                    Аккуратно перевозим диваны, шкафы, холодильники, стиральные машины и другую крупную технику.
                 </p>
             </div>
 
@@ -153,31 +150,69 @@
                 </div>
                 <h3>Личные вещи и коммерческие грузы</h3>
                 <p>
-                    Доставляем коробки, товары, оборудование, личные вещи и небольшие коммерческие грузы.
+                    Доставляем коробки, товары, оборудование и небольшие коммерческие грузы между городами маршрута.
                 </p>
             </div>
         </div>
     </div>
 </section>
 
+<!-- ===== МАРШРУТ ===== -->
 <section id="routes" class="section">
     <div class="container">
         <div class="section-head">
-            <span class="section-label">Маршруты</span>
-            <h2>Основные направления перевозок</h2>
+            <span class="section-label">Маршрут</span>
+            <h2>Один маршрут — четыре города</h2>
             <p>
-                Мы специализируемся на двух ключевых междугородних маршрутах.
+                Мы специализируемся на одном направлении. Это позволяет работать быстрее и чётче.
             </p>
         </div>
 
-        <div class="cards">
+        <!-- Визуальная карта маршрута -->
+        <div class="route-strip">
+            <div class="route-city">
+                <div class="route-dot"></div>
+                <span class="route-name">Алматы</span>
+                <span class="route-sub">Отправная точка</span>
+            </div>
+            <div class="route-line"></div>
+            <div class="route-city">
+                <div class="route-dot"></div>
+                <span class="route-name">Балхаш</span>
+                <span class="route-sub">Промежуточная остановка</span>
+            </div>
+            <div class="route-line"></div>
+            <div class="route-city">
+                <div class="route-dot"></div>
+                <span class="route-name">Караганда</span>
+                <span class="route-sub">Промежуточная остановка</span>
+            </div>
+            <div class="route-line"></div>
+            <div class="route-city">
+                <div class="route-dot"></div>
+                <span class="route-name">Астана</span>
+                <span class="route-sub">Конечный пункт</span>
+            </div>
+        </div>
+
+        <div class="cards" style="margin-top: 32px;">
             <div class="card">
                 <div class="card-icon">
                     <i class="fa-solid fa-location-dot"></i>
                 </div>
-                <h3>Алматы – Караганда – Астана</h3>
+                <h3>Алматы → Астана</h3>
                 <p>
-                    Популярный маршрут для перевозки мебели, техники, личных вещей и коммерческих грузов из Алматы через Караганду в Астану.
+                    Полный маршрут с возможностью выгрузки в Балхаше или Кара­ганде. Удобно для переездов и отправки коммерческих грузов.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fa-solid fa-map-pin"></i>
+                </div>
+                <h3>Алматы → Балхаш</h3>
+                <p>
+                    Доставка до Балхаша — мебель, вещи, товары. Фиксированный маршрут, быстрая организация.
                 </p>
             </div>
 
@@ -185,146 +220,143 @@
                 <div class="card-icon">
                     <i class="fa-solid fa-location-arrow"></i>
                 </div>
-                <h3>Астана – Караганда – Алматы</h3>
+                <h3>Алматы → Караганда</h3>
                 <p>
-                    Обратное направление для доставки грузов, переездов и транспортировки вещей из Астаны через Караганду в Алматы.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-clock"></i>
-                </div>
-                <h3>Регулярные рейсы</h3>
-                <p>
-                    Работаем по понятным направлениям, поэтому можем быстрее организовать перевозку и дать удобный график доставки.
+                    Доставка грузов и переезды из Алматы в Карагандy. Регулярные рейсы по удобному графику.
                 </p>
             </div>
         </div>
     </div>
 </section>
 
+<!-- ===== ГАЛЕРЕЯ ===== -->
 <section id="gallery" class="section section-soft">
     <div class="container">
         <div class="section-head">
             <span class="section-label">Фото</span>
             <h2>Транспорт для грузоперевозок</h2>
             <p>
-                Используем транспорт для надежной междугородней перевозки грузов.
+                Используем надёжный транспорт для перевозки грузов по маршруту.
             </p>
         </div>
 
         <div class="gallery-grid">
             <div class="gallery-card">
-                <img src="{{ url_for('static', filename='img/truck1.png') }}" alt="Грузоперевозки Алматы Караганда Астана">
+                <img src="{{ url_for('static', filename='img/truck1.png') }}" alt="Грузоперевозки Алматы Балхаш Астана">
             </div>
             <div class="gallery-card">
                 <img src="{{ url_for('static', filename='img/moving.png') }}" alt="Перевозка мебели и вещей Алматы Астана">
             </div>
             <div class="gallery-card">
-                <img src="{{ url_for('static', filename='img/logistic.png') }}" alt="Междугородняя доставка грузов Астана Алматы">
+                <img src="{{ url_for('static', filename='img/logistic.png') }}" alt="Междугородняя доставка грузов Алматы Астана">
             </div>
         </div>
     </div>
 </section>
 
+<!-- ===== О КОМПАНИИ ===== -->
 <section id="about" class="section">
     <div class="container about-wrap">
         <div class="section-head left">
             <span class="section-label">О компании</span>
-            <h2>TransLogix — перевозки по маршрутам Алматы, Караганда и Астана</h2>
+            <h2>TransLogix — грузоперевозки по маршруту Алматы – Балхаш – Караганда – Астана</h2>
         </div>
 
         <div class="about-grid">
             <div class="about-text">
                 <p>
-                    TransLogix — транспортная компания, которая занимается междугородними грузоперевозками по маршрутам Алматы – Караганда – Астана и Астана – Караганда – Алматы.
+                    TransLogix — транспортная компания, которая специализируется на грузоперевозках по маршруту Алматы – Балхаш – Караганда – Астана.
                 </p>
-
                 <p>
-                    Мы не распыляемся на все направления, а работаем по конкретным маршрутам. Благодаря этому можем быстрее организовывать перевозки, удобнее планировать доставку и лучше контролировать грузы в пути.
+                    Мы работаем по одному направлению — и это наше преимущество. Мы знаем этот маршрут, умеем быстро организовать перевозку и заранее планировать загрузку.
                 </p>
-
                 <p>
-                    Если вам нужна перевозка мебели, техники, коробок, личных вещей или коммерческого груза между Алматы, Карагандой и Астаной — оставьте заявку, и мы свяжемся с вами.
+                    Перевозим мебель, технику, личные вещи и коммерческие грузы. Если ваш груз отправляется из Алматы в любой из городов маршрута — оставьте заявку, и мы свяжемся с вами.
                 </p>
             </div>
 
             <div class="about-points">
                 <div class="point-card">
                     <strong>Алматы</strong>
-                    <span>Отправка и доставка грузов</span>
+                    <span>Отправная точка маршрута</span>
                 </div>
-
+                <div class="point-card">
+                    <strong>Балхаш</strong>
+                    <span>Промежуточная остановка</span>
+                </div>
                 <div class="point-card">
                     <strong>Караганда</strong>
-                    <span>Промежуточный и отдельный маршрут</span>
+                    <span>Промежуточная остановка</span>
                 </div>
-
                 <div class="point-card">
                     <strong>Астана</strong>
-                    <span>Междугородняя доставка и переезды</span>
+                    <span>Конечный пункт</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- ===== ПОЧЕМУ МЫ ===== -->
 <section class="section section-soft">
     <div class="container">
         <div class="section-head">
             <span class="section-label">Почему мы</span>
-            <h2>Почему удобно заказать грузоперевозку у нас</h2>
+            <h2>Почему удобно работать с нами</h2>
         </div>
 
         <div class="cards">
             <div class="card">
-                <h3>Четкие маршруты</h3>
+                <h3>Один чёткий маршрут</h3>
                 <p>
-                    Работаем по понятным направлениям: Алматы – Караганда – Астана и обратно.
+                    Работаем только по направлению Алматы – Балхаш – Караганда – Астана. Никаких лишних звеньев.
                 </p>
             </div>
-
             <div class="card">
                 <h3>Подходит для переездов</h3>
                 <p>
                     Удобно для перевозки мебели, техники, коробок и личных вещей между городами.
                 </p>
             </div>
-
             <div class="card">
-                <h3>Для частных клиентов и бизнеса</h3>
+                <h3>Частные и коммерческие грузы</h3>
                 <p>
-                    Подходит как для частных переездов, так и для коммерческой доставки грузов.
+                    Работаем как с частными клиентами, так и с бизнесом — доставка товаров, оборудования, стройматериалов.
                 </p>
             </div>
         </div>
     </div>
 </section>
 
+<!-- ===== КОНТАКТЫ ===== -->
 <section id="contact" class="section contact-section">
     <div class="container">
         <div class="section-head">
             <span class="section-label">Контакты</span>
             <h2>Оставьте заявку на перевозку</h2>
-            <p>
-                Выберите нужный маршрут и отправьте заявку.
+            <p class="section-subtitle">
+                Выберите нужный пункт назначения и отправьте заявку — мы перезвоним.
             </p>
         </div>
 
         <div class="contact-box">
             <form id="contactForm" action="/submit" method="POST">
                 <div class="direction">
-                    <strong>Направление:</strong>
+                    <strong>Направление (из Алматы до…):</strong>
 
                     <label>
-                        <input type="radio" name="direction" value="astana-almaty" required>
-                        <span>Астана – Караганда – Алматы</span>
+                        <input type="radio" name="direction" value="almaty-balkash" required>
+                        <span>Алматы → Балхаш</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="direction" value="almaty-karaganda">
+                        <span>Алматы → Караганда</span>
                     </label>
 
                     <label>
                         <input type="radio" name="direction" value="almaty-astana">
-                        <span>Алматы – Караганда – Астана</span>
+                        <span>Алматы → Астана (полный маршрут)</span>
                     </label>
                 </div>
 
@@ -347,7 +379,7 @@
                 <textarea
                     id="message"
                     name="message"
-                    placeholder="Опишите груз, переезд или маршрут"
+                    placeholder="Опишите груз: мебель, коробки, техника — и откуда/куда"
                     required
                 ></textarea>
 
@@ -361,10 +393,11 @@
     </div>
 </section>
 
+<!-- ===== FOOTER ===== -->
 <footer class="site-footer">
     <div class="container footer-inner">
         <p>© 2026 TransLogix</p>
-        <p>Грузоперевозки • Алматы – Караганда – Астана • Астана – Караганда – Алматы</p>
+        <p>Грузоперевозки • Алматы – Балхаш – Караганда – Астана</p>
     </div>
 </footer>
 
