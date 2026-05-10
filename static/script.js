@@ -17,18 +17,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const translations = {
         ru: {
-            nameError: "Имя должно содержать минимум 2 символа.",
-            phoneError: "Введите корректный телефон.",
+            nameError:    "Имя должно содержать минимум 2 символа.",
+            phoneError:   "Введите корректный телефон.",
             messageError: "Опишите груз подробнее.",
-            directionError: "Выберите направление перевозки.",
-            success: "Заявка успешно отправлена!"
+            success:      "Заявка успешно отправлена!"
         },
         kz: {
-            nameError: "Аты кемінде 2 таңбадан тұруы керек.",
-            phoneError: "Дұрыс телефон нөмірін енгізіңіз.",
+            nameError:    "Аты кемінде 2 таңбадан тұруы керек.",
+            phoneError:   "Дұрыс телефон нөмірін енгізіңіз.",
             messageError: "Жүктің сипаттамасын жазыңыз.",
-            directionError: "Тасымалдау бағытын таңдаңыз.",
-            success: "Өтініш сәтті жіберілді!"
+            success:      "Өтініш сәтті жіберілді!"
         }
     };
 
@@ -54,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ---------- Форма ----------
-    const form = document.getElementById("contactForm");
+    const form        = document.getElementById("contactForm");
     const formMessage = document.getElementById("formMessage");
 
     if (!form || !formMessage) return;
@@ -62,20 +60,15 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const name = document.getElementById("name").value.trim();
-        const phone = document.getElementById("phone").value.trim();
+        const name    = document.getElementById("name").value.trim();
+        const phone   = document.getElementById("phone").value.trim();
         const message = document.getElementById("message").value.trim();
-        const direction = document.querySelector('input[name="direction"]:checked');
-
-        if (!direction) {
-            showError(translations[currentLang].directionError);
-            return;
-        }
 
         if (name.length < 2) {
             showError(translations[currentLang].nameError);
             return;
         }
+
         const phoneRegex = /^[\d\s()+-]{6,}$/;
         if (!phoneRegex.test(phone)) {
             showError(translations[currentLang].phoneError);
@@ -87,17 +80,16 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Успех
+        // Всё ок — показываем сообщение и отправляем
         formMessage.textContent = translations[currentLang].success;
-        formMessage.style.color = "green";
+        formMessage.style.color = "#4ade80";
 
-        // Отправка формы
         form.submit();
     });
 
     function showError(text) {
         formMessage.textContent = text;
-        formMessage.style.color = "red";
+        formMessage.style.color = "#f87171";
     }
 
 });
